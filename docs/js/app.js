@@ -10,13 +10,13 @@ const orderLink=p=>`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`
 // Demo content keeps the public website populated while MySQL is unavailable.
 const FALLBACK={
  products:[
-  {id:1,name:"Jimbaran Coastal Jeep Trail",category_name:"Jeep Offroad",description:"Jelajahi lanskap pesisir dan jalur alam Bali Selatan bersama pemandu lokal.",price:425000,duration:"2-3 jam",location:"Jimbaran, Bali",image_url:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1200"},
+  {id:1,name:"Jimbaran Coastal Jeep Trail",category_name:"Jeep Offroad",description:"Jelajahi lanskap pesisir dan jalur alam Bali Selatan bersama pemandu lokal.",price:425000,duration:"2-3 jam",location:"Jimbaran, Bali",image_url:"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=85"},
   {id:2,name:"Mount Batur Sunrise Jeep",category_name:"Sunrise Tour",description:"Nikmati panorama matahari terbit dari kawasan Gunung Batur menggunakan kendaraan 4x4.",price:550000,duration:"4-5 jam",location:"Kintamani, Bangli",image_url:"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200"},
-  {id:3,name:"Ubud Jungle ATV Ride",category_name:"ATV Adventure",description:"Pengalaman ATV melintasi jalur tanah, area hijau, dan trek petualangan.",price:325000,duration:"1,5-2 jam",location:"Ubud, Gianyar",image_url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200"},
-  {id:4,name:"Bali Countryside 4x4",category_name:"Jeep Offroad",description:"Perjalanan santai dengan Jeep 4x4 menyusuri panorama pedesaan dan perbukitan Bali.",price:475000,duration:"3 jam",location:"Bali Selatan",image_url:"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1200"}
+  {id:3,name:"Ubud Jungle ATV Ride",category_name:"ATV Adventure",description:"Pengalaman ATV melintasi jalur tanah, area hijau, dan trek petualangan.",price:325000,duration:"1,5-2 jam",location:"Ubud, Gianyar",image_url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"},
+  {id:4,name:"Bali Countryside 4x4",category_name:"Jeep Offroad",description:"Perjalanan santai dengan Jeep 4x4 menyusuri panorama pedesaan dan perbukitan Bali.",price:475000,duration:"3 jam",location:"Bali Selatan",image_url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"}
  ],
  vehicles:[
-  {id:1,name:"Classic 4x4 Jeep",vehicle_type:"Jeep 4x4",capacity:4,description:"Jeep 4x4 untuk perjalanan petualangan dengan driver.",image_url:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=900"},
+  {id:1,name:"Classic 4x4 Jeep",vehicle_type:"Jeep 4x4",capacity:4,description:"Jeep 4x4 untuk perjalanan petualangan dengan driver.",image_url:"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=85"},
   {id:2,name:"Adventure ATV Single",vehicle_type:"ATV",capacity:1,description:"ATV untuk satu pengendara dengan perlengkapan keselamatan.",image_url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900"},
   {id:3,name:"Adventure ATV Tandem",vehicle_type:"ATV",capacity:2,description:"ATV tandem untuk dua peserta sesuai ketentuan operator.",image_url:"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=900"}
  ],
@@ -27,7 +27,7 @@ const FALLBACK={
  ],
  gallery:[
   {id:1,title:"Bali Mountain Adventure",image_url:"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200"},
-  {id:2,title:"Tropical Trail",image_url:"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1200"},
+  {id:2,title:"Tropical Trail",image_url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"},
   {id:3,title:"Island Escape",image_url:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200"}
  ]
 };
