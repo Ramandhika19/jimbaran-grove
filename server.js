@@ -45,5 +45,5 @@ const port = Number(process.env.PORT || 3000);
     console.error("MySQL connection failed:", err.message);
     console.log("Hardcoded fallback data is active for public read endpoints.");
   }
-  app.listen(port, () => console.log(`Jimbaran Hub running on port ${port}`));
+  app.listen(port, () => console.log(`Jimbaran Grove running on port ${port}`));
 })();
