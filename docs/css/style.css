@@ -261,3 +261,6 @@ footer .footer-brand .brand-logo{
 
 /* Jimbaran Grove wordmark */
 .brand-logo{display:block;width:190px;height:auto;max-height:58px;object-fit:contain}.brand{flex:0 0 auto}
+
+/* WhatsApp order action */
+.order-button{display:inline-flex;align-items:center;justify-content:center;padding:12px 15px;border-radius:8px;background:#078d91;color:#fff;text-decoration:none;font-size:12px;font-weight:800;white-space:nowrap}.order-button:hover{background:#075d62;color:#fff}
