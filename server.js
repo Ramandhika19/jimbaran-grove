@@ -24,9 +24,10 @@ app.use("/api", rateLimit({ windowMs: 15 * 60 * 1000, limit: 300 }));
 app.get("/health", async (_req, res) => {
   try {
     await pool.query("SELECT 1");
-    res.status(200).json({ status: "ok", database: "connected" });
+    res.status(200).json({ status: "ok", database: "connected", dataSource: "mysql", fallback: false });
   } catch (_err) {
-    res.status(503).json({ status: "error", database: "disconnected" });
+    // Keep the Node.js API available; public GET endpoints serve hardcoded data.
+    res.status(200).json({ status: "degraded", database: "disconnected", dataSource: "hardcode", fallback: true });
   }
 });
 
