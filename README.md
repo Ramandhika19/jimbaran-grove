@@ -1,6 +1,6 @@
 # Jimbaran Hub — Bali Offroad Adventure
 
-Website katalog dan booking pengalaman Jeep Offroad dan ATV di Bali.
+Website multi-page untuk ekosistem Jimbaran Hub: experiences, tenants, events, destinations, stories, dan community discovery.
 
 ## Arsitektur publikasi
 
