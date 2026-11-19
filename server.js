@@ -11,6 +11,7 @@ const app = express();
 app.use(helmet({ contentSecurityPolicy: false }));
 const allowedOrigins = (process.env.CORS_ORIGINS || process.env.APP_URL || "http://localhost:3000").split(",").map(value => value.trim()).filter(Boolean);
 app.use(cors({
+  exposedHeaders: ["X-Data-Source"],
   origin(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
     return callback(new Error("Origin not allowed by CORS"));
