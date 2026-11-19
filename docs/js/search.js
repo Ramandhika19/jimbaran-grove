@@ -21,6 +21,6 @@ form?.addEventListener("submit",async e=>{
  if(API&&!API.includes("YOUR-NODE-API-HOST")){
   try{const url=new URL(API+"/api/search");url.searchParams.set("q",q);url.searchParams.set("category",selected);const r=await fetch(url);if(!r.ok)throw new Error("API tidak tersedia.");const data=await r.json();render(data.results||[],q,data.dataSource==="hardcode"?"data demo":"database");return}catch(_err){/* switch to local demo content below */}
  }
- const items=demo.filter(x=>(selected==="all"||selected===x.type||selected==="places"&&x.type==="place"||selected==="experiences"&&x.type==="experience")&&(x.title+" "+x.description+" "+x.category_name).toLowerCase().includes(q));
+ const items=demo.filter(x=>(selected==="all"||selected===x.type||selected==="places"&&x.type==="place"||selected==="experiences"&&x.type==="experience"||selected==="events"&&x.type==="event"||selected==="stories"&&x.type==="story")&&(x.title+" "+x.description+" "+x.category_name).toLowerCase().includes(q));
  render(items,q,"data hardcode");
 });
