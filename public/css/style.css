@@ -16,3 +16,9 @@
 .review-form .btn{width:100%;margin:8px 0 12px}
 .review-note{display:block;line-height:1.6}
 @media(max-width:760px){.reviews-layout{grid-template-columns:1fr}.review-card,.review-form{padding:17px}}
+
+.product-rating{display:flex;align-items:center;gap:6px;margin-top:11px}
+.product-rating>span{color:#a6bf43;letter-spacing:1px;font-size:11px}
+.product-rating strong{font:800 12px Manrope;color:var(--forest)}
+.product-rating small{font-size:9px;color:#879187}
+.detail-rating{color:#718b34;font-weight:700}
