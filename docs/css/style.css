@@ -186,3 +186,75 @@ footer .footer-brand .brand-logo{width:74px;height:74px;max-width:74px;max-heigh
  .scroll-cue{bottom:18px}
  footer .footer-brand{width:86px;height:70px;flex-basis:86px}
 }
+
+
+/* Final desktop header and hero composition fix */
+.topbar{
+  height:92px;min-height:92px;padding:0 clamp(24px,5.5vw,78px);
+  display:flex;align-items:center;gap:clamp(18px,2.5vw,38px);
+  overflow:visible;
+}
+.topbar .brand{
+  display:flex;align-items:center;justify-content:flex-start;
+  flex:0 0 132px;width:132px;height:82px;overflow:visible;
+  min-width:0;
+}
+.topbar .brand-logo{
+  display:block;width:126px;height:82px;max-width:126px;max-height:82px;
+  object-fit:contain;object-position:left center;
+  padding:0!important;margin:0;background:transparent!important;border:0;
+}
+.topbar nav{
+  flex:1 1 auto;min-width:0;display:flex;justify-content:center;
+  align-items:center;gap:clamp(15px,2.2vw,32px);white-space:nowrap;
+}
+.topbar .nav-actions{flex:0 0 auto;display:flex;align-items:center;gap:12px}
+.topbar .nav-actions .btn{white-space:nowrap}
+.hero{
+  height:auto;min-height:min(760px,calc(100svh - 92px));
+  padding:76px clamp(34px,10vw,150px) 88px;
+  align-items:center;
+}
+.hero-content{width:100%;max-width:980px}
+.hero h1{
+  width:100%;max-width:980px;
+  font-size:clamp(48px,5.35vw,74px);
+  line-height:1.02;letter-spacing:-2.6px;
+  text-wrap:initial;overflow-wrap:normal;
+}
+.hero-copy{max-width:510px}
+.hero-meta{margin-top:42px}
+footer .footer-brand{
+  display:flex;align-items:center;justify-content:flex-start;
+  width:132px;height:82px;flex:0 0 132px;overflow:visible;
+}
+footer .footer-brand .brand-logo{
+  width:122px;height:78px;max-width:122px;max-height:78px;
+  object-fit:contain;background:transparent!important;padding:0!important;border-radius:0!important;
+}
+@media(max-width:1050px){
+  .topbar{gap:16px;padding:0 22px}
+  .topbar .brand{flex-basis:104px;width:104px}
+  .topbar .brand-logo{width:100px;max-width:100px}
+  .topbar nav{gap:14px}
+  .topbar .nav-actions .btn{padding:12px 13px}
+  .hero-content{max-width:850px}
+  .hero h1{font-size:clamp(46px,6.2vw,68px)}
+}
+@media(max-width:760px){
+  .topbar{height:76px;min-height:76px;padding:0 18px}
+  .topbar .brand{height:70px;width:100px;flex-basis:100px}
+  .topbar .brand-logo{width:96px;height:68px;max-width:96px;max-height:68px}
+  .topbar nav{top:76px}
+  .hero{min-height:680px;padding:66px 7vw 88px}
+  .hero-content{max-width:100%}
+  .hero h1{font-size:clamp(42px,9.6vw,62px);line-height:1.04;letter-spacing:-1.8px}
+  .hero-meta{gap:20px;flex-wrap:wrap}
+  footer .footer-brand{width:100px;flex-basis:100px}
+  footer .footer-brand .brand-logo{width:96px;height:68px;max-width:96px;max-height:68px}
+}
+@media(max-width:520px){
+  .topbar .brand{width:82px;flex-basis:82px}
+  .topbar .brand-logo{width:80px;max-width:80px}
+  .hero h1{font-size:clamp(39px,10.5vw,54px)}
+}
