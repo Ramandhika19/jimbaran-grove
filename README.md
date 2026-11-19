@@ -1,6 +1,6 @@
-# Jimbaran Hub — Bali Offroad Adventure
+# Jimbaran Grove — Explore · Experience · Connect
 
-Website multi-page untuk ekosistem Jimbaran Hub: experiences, tenants, events, destinations, stories, dan community discovery.
+Website multi-page untuk ekosistem Jimbaran Grove di Jimbaran, Bali: experiences, tenants, events, destinations, stories, dan community discovery.
 
 ## Arsitektur publikasi
 
