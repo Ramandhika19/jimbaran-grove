@@ -24,7 +24,7 @@ GitHub Pages hanya menjalankan file statis (HTML, CSS, JavaScript). Jangan menar
 1. Buka **Settings → Pages** pada repository.
 2. Pada **Build and deployment**, pilih **Deploy from a branch**.
 3. Pilih branch `main` dan folder `/docs`, lalu klik **Save**.
-4. URL umumnya: `https://ramandhika19.github.io/jimbarangrove/`.
+4. URL umumnya: `https://ramandhika19.github.io/jimbaranhub/`.
 
 ## Konfigurasi backend dan MySQL
 
