@@ -24,18 +24,18 @@ const gallery = [
 ];
 
 const tenants = [
-  { id: 1, name: "JET Bike & Skate Park", slug: "jet-bike-skate-park", category: "Sports & Adventure", description: "Area untuk aktivitas jet bike dan skate park.", location: "Jimbaran Grove, Bali" },
-  { id: 2, name: "Colabo Cafe", slug: "colabo-cafe", category: "Food & Drink", description: "Cafe dan ruang berkumpul di Jimbaran Grove.", location: "Jimbaran Grove, Bali" },
-  { id: 3, name: "Biosphere School", slug: "biosphere-school", category: "Education", description: "Sekolah dengan pendekatan tech dan nature.", location: "Jimbaran Grove, Bali" },
-  { id: 4, name: "JLoft Office", slug: "jloft-office", category: "Work & Coworking", description: "Ruang kerja untuk bisnis dan profesional.", location: "Jimbaran Grove, Bali" },
-  { id: 5, name: "Karting Star", slug: "karting-star", category: "Sports & Adventure", description: "Pengalaman go-kart dengan lintasan 400 meter.", location: "Jimbaran Grove, Bali" },
-  { id: 6, name: "Jimba Arthall", slug: "jimba-arthall", category: "Arts & Creative", description: "Ruang untuk seni, ide, dan pertunjukan.", location: "Jimbaran Grove, Bali" },
-  { id: 7, name: "Padel Club Indonesia - Bali", slug: "padel-club-indonesia-bali", category: "Sports & Wellness", description: "Fasilitas padel dengan lima lapangan.", location: "Jimbaran Grove, Bali" },
-  { id: 8, name: "Saia Pilates", slug: "saia-pilates", category: "Sports & Wellness", description: "Studio reformer dan sesi pilates.", location: "Jimbaran Grove, Bali" },
-  { id: 9, name: "Rona di Bukit Cocktails & Grill", slug: "rona-di-bukit", category: "Food & Drink", description: "Tempat bersantap dan berkumpul di Jimbaran Grove.", location: "Jimbaran Grove, Bali" },
-  { id: 10, name: "Dance Studio", slug: "dance-studio", category: "Arts & Creative", description: "Studio untuk ballet, hip-hop, tari Bali, dan kelas tari lainnya.", location: "Jimbaran Grove, Bali" },
-  { id: 11, name: "Colabo Meeting Room", slug: "colabo-meeting-room", category: "Work & Coworking", description: "Ruang rapat dan kolaborasi.", location: "Jimbaran Grove, Bali" },
-  { id: 12, name: "Ragi Baking Academy", slug: "ragi-baking-academy", category: "Education", description: "Akademi baking yang diumumkan sebagai coming soon.", location: "Jimbaran Grove, Bali" }
+  { id: 1, name: "JET Bike & Skate Park", slug: "jet-bike-skate-park", category: "Sports & Adventure", description: "Area untuk aktivitas jet bike dan skate park.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000"},
+  { id: 2, name: "Colabo Cafe", slug: "colabo-cafe", category: "Food & Drink", description: "Cafe dan ruang berkumpul di Jimbaran Grove.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1000"},
+  { id: 3, name: "Biosphere School", slug: "biosphere-school", category: "Education", description: "Sekolah dengan pendekatan tech dan nature.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1000"},
+  { id: 4, name: "JLoft Office", slug: "jloft-office", category: "Work & Coworking", description: "Ruang kerja untuk bisnis dan profesional.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000"},
+  { id: 5, name: "Karting Star", slug: "karting-star", category: "Sports & Adventure", description: "Pengalaman go-kart dengan lintasan 400 meter.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000"},
+  { id: 6, name: "Jimba Arthall", slug: "jimba-arthall", category: "Arts & Creative", description: "Ruang untuk seni, ide, dan pertunjukan.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?w=1000"},
+  { id: 7, name: "Padel Club Indonesia - Bali", slug: "padel-club-indonesia-bali", category: "Sports & Wellness", description: "Fasilitas padel dengan lima lapangan.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1000"},
+  { id: 8, name: "Saia Pilates", slug: "saia-pilates", category: "Sports & Wellness", description: "Studio reformer dan sesi pilates.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1000"},
+  { id: 9, name: "Rona di Bukit Cocktails & Grill", slug: "rona-di-bukit", category: "Food & Drink", description: "Tempat bersantap dan berkumpul di Jimbaran Grove.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000"},
+  { id: 10, name: "Dance Studio", slug: "dance-studio", category: "Arts & Creative", description: "Studio untuk ballet, hip-hop, tari Bali, dan kelas tari lainnya.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1000"},
+  { id: 11, name: "Colabo Meeting Room", slug: "colabo-meeting-room", category: "Work & Coworking", description: "Ruang rapat dan kolaborasi.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000"},
+  { id: 12, name: "Ragi Baking Academy", slug: "ragi-baking-academy", category: "Education", description: "Akademi baking yang diumumkan sebagai coming soon.", location: "Jimbaran Grove, Bali" , image_url: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1000"}
 ];
 
 const events = [
