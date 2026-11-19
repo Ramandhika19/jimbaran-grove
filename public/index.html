@@ -28,6 +28,21 @@
 <section class="feature-band" id="vehicles"><div class="feature-image"></div><div class="feature-copy"><p class="eyebrow">BUILT FOR THE JOURNEY</p><h2>Not just the view.<br><em>The way you get there.</em></h2><p>From capable 4x4 rides to outdoor activities, find an experience that turns the journey into the best part of the day.</p><a class="btn btn-outline" href="#experiences">Explore the experiences ↗</a></div></section>
 <section class="section destinations" id="destinations"><div class="section-head"><div><p class="eyebrow dark">PLACES TO DISCOVER</p><h2>Find your <em>kind of place.</em></h2></div></div><div class="destination-grid" id="destinationGrid"><article class="destination-card destination-jimbaran"><div><h3>Jimbaran</h3><p>Coastal life · South Bali</p></div></article><article class="destination-card destination-ubud"><div><h3>Ubud</h3><p>Nature · Culture · Adventure</p></div></article><article class="destination-card destination-batur"><div><h3>Mount Batur</h3><p>Highlands · Sunrise</p></div></article></div></section>
 <section class="section stories" id="stories"><div class="section-head"><div><p class="eyebrow dark">NOTES FROM THE GROVE</p><h2>Stories worth <em>sharing.</em></h2></div><span class="section-kicker">IDEAS · PEOPLE · PLACES</span></div><div class="story-grid" id="storyGrid" aria-live="polite"></div></section>
+<section class="section reviews-section" id="reviews">
+  <div class="section-head"><div><p class="eyebrow dark">COMMUNITY NOTES</p><h2>Stories from our <em>visitors.</em></h2></div><span class="section-kicker">SHARE YOUR EXPERIENCE</span></div>
+  <div class="reviews-layout">
+    <div class="review-list" id="reviewList" aria-live="polite"></div>
+    <form class="review-form" id="reviewForm">
+      <h3>Write a review</h3><p>Bagikan pengalamanmu bersama Jimbaran Grove.</p>
+      <label>Nama<input name="name" maxlength="40" required placeholder="Nama kamu"></label>
+      <label>Rating<select name="rating" required><option value="5">★★★★★ — Sangat puas</option><option value="4">★★★★☆ — Puas</option><option value="3">★★★☆☆ — Cukup</option><option value="2">★★☆☆☆ — Kurang</option><option value="1">★☆☆☆☆ — Tidak puas</option></select></label>
+      <label>Review<textarea name="message" maxlength="500" required placeholder="Ceritakan pengalamanmu..." rows="4"></textarea></label>
+      <button class="btn btn-primary" type="submit">Kirim review ↗</button>
+      <small class="review-note">Review demo disimpan di browser perangkat ini (belum tersinkron ke server).</small>
+      <p class="form-message" id="reviewMessage" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 <section class="booking-cta"><p class="eyebrow">YOUR NEXT STORY STARTS HERE</p><h2>Make room for<br><em>something new.</em></h2><p>Explore Jimbaran Grove and find an experience that feels like yours.</p><a class="btn btn-primary btn-large" href="#experiences">Explore Jimbaran Grove ↗</a></section>
 </main>
 <footer><a class="brand" href="#home"><span class="brand-mark">JG</span><span class="brand-name">JIMBARAN <b>GROVE</b><small>EXPLORE · EXPERIENCE · CONNECT</small></span></a><p>Explore, experience, and connect. Rooted in Bali.</p><span>© <span id="year"></span> Jimbaran Grove. Demo concept.</span></footer>
