@@ -4,7 +4,12 @@ async function get(path){if(!API||API.includes("YOUR-NODE-API-HOST"))throw new E
 document.querySelectorAll("[data-year]").forEach(x=>x.textContent=new Date().getFullYear());
 const toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".site-nav");if(toggle&&nav)toggle.addEventListener("click",()=>{nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(nav.classList.contains("open")))});
 document.querySelectorAll(".site-nav a").forEach(a=>a.addEventListener("click",()=>nav?.classList.remove("open")));
-function card(x){return `<a class="discover-card" href="${esc(x.url||"#")}"><img src="${esc(x.image_url||"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80")}" alt=""><div><small>${esc(x.category_name||x.type||"Explore")}</small><h3>${esc(x.title||x.name)}</h3><p>${esc(x.description||"Explore more at Jimbaran Hub.")}</p><span>Discover ↗</span></div></a>`}
+function card(x){
+ const title=x.title||x.name||"Explore Jimbaran Grove";
+ const image=esc(x.image_url||"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80");
+ const order=x.type==="experience"?`<a class="order-button" href="https://wa.me/6285847872972?text=${encodeURIComponent("Halo Jimbaran Grove, saya ingin memesan "+title+". Mohon info ketersediaan dan detailnya.")}" target="_blank" rel="noopener">Pesan via WhatsApp ↗</a>`:"";
+ return `<article class="discover-card"><img src="${image}" alt="${esc(title)}" loading="lazy"><div><small>${esc(x.category_name||x.type||"Explore")}</small><h3>${esc(title)}</h3><p>${esc(x.description||"Explore more at Jimbaran Grove.")}</p><span>${esc(x.location||x.venue||"Jimbaran Grove, Bali")}</span><p><a href="${esc(x.url||"#")}">Lihat detail ↗</a></p>${order}</div></article>`;
+}
 const demoExperiences=[
 {id:1,name:"Jimbaran Coastal Jeep Trail",category_name:"Jeep Offroad",description:"Jelajahi jalur pesisir dan panorama Bali Selatan bersama pemandu lokal.",price:425000,duration:"2-3 jam",location:"Jimbaran, Bali",image_url:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1000"},
 {id:2,name:"Mount Batur Sunrise Jeep",category_name:"Sunrise Tour",description:"Nikmati matahari terbit dan lanskap Gunung Batur dengan Jeep 4x4.",price:550000,duration:"4-5 jam",location:"Kintamani, Bali",image_url:"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1000"},
