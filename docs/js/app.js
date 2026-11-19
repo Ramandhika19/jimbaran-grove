@@ -1,6 +1,17 @@
 const money = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n||0));
 const escapeHtml = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const API_BASE_URL = (window.JIMBARAN_CONFIG?.API_BASE_URL || "").replace(/\\/$/, "");\nasync function apiFetch(path, options={}) { return fetch(`${API_BASE_URL}${path}`, options); }\nasync function getJSON(url){const r=await apiFetch(url);if(!r.ok)throw new Error("Gagal memuat data");return r.json()}
+const API_BASE_URL = (window.JIMBARAN_CONFIG?.API_BASE_URL || "").replace(/\/$/, "");
+async function apiFetch(path, options = {}) {
+  if (!API_BASE_URL || API_BASE_URL.includes("YOUR-NODE-API-HOST")) {
+    throw new Error("API belum dikonfigurasi. Isi URL backend Node.js di docs/js/config.js.");
+  }
+  return fetch(`${API_BASE_URL}${path}`, options);
+}
+async function getJSON(url) {
+  const r = await apiFetch(url);
+  if (!r.ok) throw new Error("Gagal memuat data");
+  return r.json();
+}
 async function loadProducts(){const el=document.getElementById("productGrid");try{const items=await getJSON("/api/products");el.innerHTML=items.map(p=>`<article class="product-card"><img src="${escapeHtml(p.image_url||"")}" alt="${escapeHtml(p.name)}" loading="lazy"><div class="product-info"><small>${escapeHtml(p.category_name||"Bali experience")}</small><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml((p.description||"").slice(0,105))}</p><div class="price-row"><strong>${money(p.price)}</strong><button onclick="showLogin()">Book trip ↗</button></div></div></article>`).join("")||"<p>Belum ada paket tersedia.</p>"}catch(e){el.innerHTML='<p class="muted">Data paket belum tersedia. Pastikan database sudah diimpor.</p>'}}
 async function loadVehicles(){const el=document.getElementById("vehicleGrid");try{const items=await getJSON("/api/vehicles");el.innerHTML=items.map(v=>`<article class="vehicle-card"><span>${escapeHtml(v.vehicle_type)} • ${v.capacity} SEATS</span><h3>${escapeHtml(v.name)}</h3><p>${escapeHtml(v.description||"Adventure-ready vehicle.")}</p></article>`).join("")}catch(_){el.innerHTML=""}}
 async function loadDestinations(){const el=document.getElementById("destinationGrid");try{const items=await getJSON("/api/destinations");el.innerHTML=items.map(d=>`<article class="destination-card" style="background-image:url('${escapeHtml(d.image_url||"")}')"><div><h3>${escapeHtml(d.name)}</h3><p>${escapeHtml(d.region||"Bali")}</p></div></article>`).join("")}catch(_){el.innerHTML=""}}
