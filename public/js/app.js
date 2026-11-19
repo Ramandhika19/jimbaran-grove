@@ -40,11 +40,9 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   msg.textContent = `Login demo berhasil sebagai ${account.role === "admin" ? "Administrator" : "User"}.`;
   form.reset();
 
-  if (account.role === "admin") {
-    window.setTimeout(() => { window.location.href = "/admin.html"; }, 500);
-  } else {
-    msg.textContent += " Selamat datang di Jimbaran Grove!";
-  }
+  msg.textContent += account.role === "admin"
+    ? " Akun admin demo dikenali."
+    : " Selamat datang di Jimbaran Grove!";
 });
 document.getElementById("year").textContent=new Date().getFullYear();
 loadProducts();loadVehicles();loadDestinations();loadGallery();
