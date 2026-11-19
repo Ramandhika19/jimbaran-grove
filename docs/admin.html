@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#075D62">
+<title>Admin Dashboard — Jimbaran Grove</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css"><link rel="stylesheet" href="./css/pages.css"><link rel="icon" type="image/svg+xml" href="./assets/jimbaran-grove-mark.svg">
+</head>
+<body class="admin-body">
+<header class="site-header"><a class="site-brand" href="./index.html"><img src="./assets/jimbaran-grove-logo.svg" alt="Jimbaran Grove"></a><strong class="admin-heading">Admin dashboard</strong><div class="admin-top-actions"><a class="btn btn-ghost" href="./index.html">Lihat website ↗</a><button class="btn btn-primary" id="logoutButton">Logout</button></div></header>
+<main class="admin-wrap">
+<section class="admin-welcome"><p class="eyebrow">JIMBARAN GROVE · CONTENT MANAGEMENT</p><h1>Kelola konten <em>Grove.</em></h1><p>Tambah, ubah, dan hapus pengalaman, tempat, serta event. Data demo disimpan di browser ini menggunakan localStorage, tanpa database.</p><div class="admin-stats"><article><strong id="countExperiences">0</strong><span>Experiences</span></article><article><strong id="countPlaces">0</strong><span>Places</span></article><article><strong id="countEvents">0</strong><span>Events</span></article></div></section>
+<section class="admin-panel"><div class="admin-panel-head"><div><p class="eyebrow dark">CONTENT EDITOR</p><h2 id="formTitle">Tambah konten baru</h2></div><span class="local-badge">DEMO · LOCAL STORAGE</span></div>
+<form id="contentForm" class="admin-form">
+<input type="hidden" id="editId">
+<label>Jenis konten<select id="contentType"><option value="experience">Experience / Aktivitas</option><option value="place">Place / Tenant</option><option value="event">Event</option></select></label>
+<label>Nama / Judul<input id="contentName" required maxlength="100" placeholder="Contoh: Jimbaran Coastal Jeep Trail"></label>
+<label>Kategori<input id="contentCategory" required maxlength="60" placeholder="Contoh: Jeep Offroad"></label>
+<label>Lokasi<input id="contentLocation" maxlength="100" placeholder="Jimbaran, Bali"></label>
+<label id="priceField">Harga (Rupiah)<input id="contentPrice" type="number" min="0" step="1000" value="0"></label>
+<label>Deskripsi<textarea id="contentDescription" rows="3" maxlength="500" placeholder="Jelaskan konten ini..."></textarea></label>
+<label>URL gambar<input id="contentImage" type="url" placeholder="https://..."></label>
+<div class="admin-form-actions"><button class="btn btn-primary" type="submit" id="saveButton">Simpan konten</button><button class="btn btn-ghost" type="button" id="cancelEdit" hidden>Batal edit</button></div>
+<p class="admin-feedback" id="formFeedback" aria-live="polite"></p>
+</form></section>
+<section class="admin-panel"><div class="admin-panel-head"><div><p class="eyebrow dark">CONTENT LIBRARY</p><h2>Daftar konten</h2></div><select id="listFilter" aria-label="Filter jenis konten"><option value="all">Semua konten</option><option value="experience">Experiences</option><option value="place">Places</option><option value="event">Events</option></select></div><div id="contentList" class="admin-list"></div></section>
+<p class="admin-warning"><strong>Catatan:</strong> ini dashboard demo. Data hanya tersimpan pada browser/perangkat yang digunakan dan tidak otomatis tersinkron ke pengunjung lain atau database online. Login hardcode juga hanya untuk demonstrasi, bukan autentikasi produksi.</p>
+</main>
+<script src="./js/admin.js"></script>
+</body></html>
