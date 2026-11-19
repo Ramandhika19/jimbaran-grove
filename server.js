@@ -43,7 +43,7 @@ const port = Number(process.env.PORT || 3000);
     console.log("MySQL connected");
   } catch (err) {
     console.error("MySQL connection failed:", err.message);
-    console.error("Check backend environment variables and import database/schema.sql");
+    console.log("Hardcoded fallback data is active for public read endpoints.");
   }
   app.listen(port, () => console.log(`Jimbaran Hub running on port ${port}`));
 })();
