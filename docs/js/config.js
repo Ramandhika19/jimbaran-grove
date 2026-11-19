@@ -1,5 +1,6 @@
-// Set this to the public URL of your deployed Node.js API (no trailing slash).
+// Demo mode: keep this empty while the public website uses local hardcoded data.
+// After deploying the Node.js API, place its public origin here (without a trailing slash).
 // Example: https://jimbaranhub-api.onrender.com
 window.JIMBARAN_CONFIG = {
-  API_BASE_URL: "https://YOUR-NODE-API-HOST.example.com"
+  API_BASE_URL: ""
 };
