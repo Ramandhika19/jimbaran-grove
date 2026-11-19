@@ -19,6 +19,17 @@ app.use(cors({
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", rateLimit({ windowMs: 15 * 60 * 1000, limit: 300 }));
+
+// Deployment health check: verifies the API process and MySQL connection.
+app.get("/health", async (_req, res) => {
+  try {
+    await pool.query("SELECT 1");
+    res.status(200).json({ status: "ok", database: "connected" });
+  } catch (_err) {
+    res.status(503).json({ status: "error", database: "disconnected" });
+  }
+});
+
 app.use("/api", api);
 app.use(express.static(path.join(__dirname, "public")));
 app.get("*", (_req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
@@ -30,7 +41,7 @@ const port = Number(process.env.PORT || 3000);
     console.log("MySQL connected");
   } catch (err) {
     console.error("MySQL connection failed:", err.message);
-    console.error("Check .env and import database/schema.sql");
+    console.error("Check backend environment variables and import database/schema.sql");
   }
-  app.listen(port, () => console.log(`Jimbaran Hub running at http://localhost:${port}`));
+  app.listen(port, () => console.log(`Jimbaran Hub running on port ${port}`));
 })();
