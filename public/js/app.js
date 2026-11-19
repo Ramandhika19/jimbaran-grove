@@ -54,9 +54,9 @@ document.getElementById("authModal").addEventListener("click",e=>{if(e.target.id
 function showLogin(){const modal=document.getElementById("authModal");modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open")}
 document.getElementById("loginOpen").addEventListener("click",showLogin);
 document.getElementById("loginForm").addEventListener("submit",e=>{
- e.preventDefault();const form=e.currentTarget;const values=Object.fromEntries(new FormData(form));const email=String(values.email||"").trim().toLowerCase();const password=String(values.password||"");const accounts={"caesarramandhika@gmail.com":{name:"Administrator",role:"admin"},"ramandhikaputra683@gmail.com":{name:"Jimbaran Grove Member",role:"user"}};const account=accounts[email];const msg=document.getElementById("authMessage");
- if(!account||password!=="12345678"){msg.textContent="Email atau password salah. Periksa kembali akun demo kamu.";return}
- localStorage.setItem("jg_session",JSON.stringify({email,name:account.name,role:account.role,loginAt:new Date().toISOString()}));localStorage.setItem("jh_token","demo-session");msg.textContent="Login demo berhasil sebagai "+(account.role==="admin"?"Administrator":"User")+". Data login ini hanya simulasi tampilan.";form.reset();
+ e.preventDefault();const form=e.currentTarget;const values=Object.fromEntries(new FormData(form));const email=String(values.email||"").trim().toLowerCase();const password=String(values.password||"");const msg=document.getElementById("authMessage");
+ if(email!=="caesarramandhika@gmail.com"||password!=="12345678"){msg.textContent="Email atau password admin salah.";return}
+ localStorage.setItem("jg_session",JSON.stringify({email,name:"Administrator",role:"admin",loginAt:new Date().toISOString()}));localStorage.setItem("jh_token","demo-session");window.location.href="/admin.html";
 });
 document.getElementById("menuToggle").addEventListener("click",()=>{const nav=document.getElementById("mainNav"),button=document.getElementById("menuToggle"),open=nav.classList.toggle("nav-open");button.setAttribute("aria-expanded",String(open));button.textContent=open?"×":"☰"});
 document.querySelectorAll("#mainNav a").forEach(a=>a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("nav-open");document.getElementById("menuToggle").setAttribute("aria-expanded","false");document.getElementById("menuToggle").textContent="☰"}));
