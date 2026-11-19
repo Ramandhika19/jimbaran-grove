@@ -44,7 +44,7 @@ const events = [
 ];
 
 const stories = [
-  { id: 1, title: "A Place to Work, Play, and Connect", slug: "work-play-connect", excerpt: "Mengenal Jimbaran Hub sebagai ruang untuk aktivitas, kreativitas, olahraga, dan komunitas.", category: "About Jimbaran Hub", image_url: "https://images.unsplash.com/photo-1517457373958-b7 pyramid".replace("b7 pyramid","b7"), published_at: null },
+  { id: 1, title: "A Place to Work, Play, and Connect", slug: "work-play-connect", excerpt: "Mengenal Jimbaran Hub sebagai ruang untuk aktivitas, kreativitas, olahraga, dan komunitas.", category: "About Jimbaran Hub", image_url: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200", published_at: null },
   { id: 2, title: "Explore More of South Bali", slug: "explore-south-bali", excerpt: "Ide perjalanan untuk menikmati alam, aktivitas, dan destinasi di Bali Selatan.", category: "Explore Bali", image_url: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200", published_at: null }
 ];
 
