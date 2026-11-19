@@ -61,5 +61,25 @@ document.getElementById("loginForm").addEventListener("submit",e=>{
 document.getElementById("menuToggle").addEventListener("click",()=>{const nav=document.getElementById("mainNav"),button=document.getElementById("menuToggle"),open=nav.classList.toggle("nav-open");button.setAttribute("aria-expanded",String(open));button.textContent=open?"×":"☰"});
 document.querySelectorAll("#mainNav a").forEach(a=>a.addEventListener("click",()=>{document.getElementById("mainNav").classList.remove("nav-open");document.getElementById("menuToggle").setAttribute("aria-expanded","false");document.getElementById("menuToggle").textContent="☰"}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal("detailModal");closeModal("authModal")}});
+const reviewList=document.getElementById("reviewList");
+const reviewForm=document.getElementById("reviewForm");
+const demoReviews=[
+ {name:"Made",rating:5,message:"Pengalaman seru untuk menikmati sisi lain Bali. Informasi aktivitasnya mudah dipahami.",date:"Contoh review"},
+ {name:"Ayu",rating:5,message:"Suka dengan pilihan aktivitas outdoor dan nuansa lokal yang ditampilkan.",date:"Contoh review"}
+];
+function getReviews(){try{return JSON.parse(localStorage.getItem("jg_reviews")||"null")||demoReviews}catch{return demoReviews}}
+function renderReviews(){
+ const reviews=getReviews();
+ reviewList.innerHTML=reviews.length?reviews.map(r=>'<article class="review-card"><div class="review-top"><strong>'+escapeHtml(r.name)+'</strong><span class="review-stars" aria-label="'+Number(r.rating)+' dari 5 bintang">'+("★".repeat(Math.max(1,Math.min(5,Number(r.rating)||5))))+("☆".repeat(5-Math.max(1,Math.min(5,Number(r.rating)||5))))+'</span></div><p>'+escapeHtml(r.message)+'</p><small>'+escapeHtml(r.date||"Pengunjung")+'</small></article>').join(""):'<p class="empty-state">Belum ada review. Jadilah yang pertama berbagi pengalaman.</p>';
+}
+reviewForm.addEventListener("submit",e=>{
+ e.preventDefault();
+ const values=Object.fromEntries(new FormData(reviewForm));
+ const reviews=getReviews();
+ reviews.unshift({name:String(values.name).trim(),rating:Number(values.rating),message:String(values.message).trim(),date:new Date().toLocaleDateString("id-ID")});
+ try{localStorage.setItem("jg_reviews",JSON.stringify(reviews.slice(0,30)));document.getElementById("reviewMessage").textContent="Terima kasih! Review tersimpan di browser ini.";reviewForm.reset();renderReviews()}
+ catch{document.getElementById("reviewMessage").textContent="Penyimpanan browser penuh atau tidak tersedia."}
+});
 document.getElementById("year").textContent=new Date().getFullYear();
 render();
+renderReviews();
