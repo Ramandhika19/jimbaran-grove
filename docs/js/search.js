@@ -24,6 +24,7 @@ form?.addEventListener("submit",async e=>{
  const localItems=(key)=>{try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:[]}catch{return []}};
  const editable=[...localItems("jg_experiences").map(x=>({id:x.id,title:x.name,description:x.description,type:"experience",category_name:x.category_name||x.category,image_url:x.image_url,url:"./experiences.html"})),...localItems("jg_places").map(x=>({id:x.id,title:x.name,description:x.description,type:"place",category_name:x.category,image_url:x.image_url,url:"./places.html"})),...localItems("jg_events").map(x=>({id:x.id,title:x.title,description:x.description,type:"event",category_name:x.category,image_url:x.image_url,url:"./events.html"}))];
  const source=[...demo,...editable];
- const items=source.filter(x=>(selected==="all"||selected===x.type||selected==="places"&&x.type==="place"||selected==="experiences"&&x.type==="experience"||selected==="events"&&x.type==="event"||selected==="stories"&&x.type==="story")&&(x.title+" "+x.description+" "+x.category_name).toLowerCase().includes(q));
+ const uniqueSource=source.filter((x,i,a)=>a.findIndex(y=>y.type===x.type&&y.title===x.title)===i);
+ const items=uniqueSource.filter(x=>(selected==="all"||selected===x.type||selected==="places"&&x.type==="place"||selected==="experiences"&&x.type==="experience"||selected==="events"&&x.type==="event"||selected==="stories"&&x.type==="story")&&(x.title+" "+x.description+" "+x.category_name).toLowerCase().includes(q));
  render(items,q,"data demo + konten lokal");
 });
