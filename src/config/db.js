@@ -8,6 +8,8 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-  timezone: "Z"
+  timezone: "Z",
+  // Cloud MySQL providers (including Enzonic) require TLS; keep false for local XAMPP.
+  ssl: process.env.DB_SSL === "true" ? {} : undefined
 });
 module.exports = pool;
