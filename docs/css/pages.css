@@ -3,8 +3,8 @@
 :root{--jh-teal:#078d91;--jh-deep:#075e63;--jh-lime:#b7cc2a;--jh-cream:#f7faf3;--jh-ink:#173d3b}
 body{margin:0;background:var(--jh-cream);color:var(--jh-ink);font-family:Inter, sans-serif}
 .site-header{height:82px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;gap:34px;background:#fbfcf8;position:sticky;top:0;z-index:50;border-bottom:1px solid #e2ebdf}
-.site-brand{display:flex;width:76px;height:76px;align-items:center;flex:0 0 76px}
-.site-brand img{width:74px;height:74px;object-fit:contain}
+.site-brand{display:flex;width:210px;height:76px;align-items:center;flex:0 0 210px}
+.site-brand img{width:200px;height:auto;max-height:62px;object-fit:contain}
 .site-nav{display:flex;justify-content:center;align-items:center;gap:clamp(14px,2.2vw,32px);flex:1}
 .site-nav a,.footer-links a{color:#315553;text-decoration:none;font-size:13px;font-weight:600}
 .site-nav a:hover,.footer-links a:hover{color:var(--jh-teal)}
@@ -58,3 +58,7 @@ footer .brand-logo{background:transparent!important;padding:0!important;border-r
 .hub-overview-grid p{font-size:13px;line-height:1.7;color:#607771;margin:0}
 @media(max-width:850px){.hub-overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.hub-overview-grid{grid-template-columns:1fr}}
+
+/* Jimbaran Grove wordmark sizing */
+.site-brand{width:210px;flex-basis:210px}.site-brand img{width:200px;height:auto;max-height:62px;object-fit:contain}
+@media(max-width:760px){.site-brand{width:160px;flex-basis:160px}.site-brand img{width:155px;max-height:52px}}
