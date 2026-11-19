@@ -1,0 +1,8 @@
+const API=(window.JIMBARAN_CONFIG?.API_BASE_URL||"").replace(/\/$/,"");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+async function get(path){if(!API||API.includes("YOUR-NODE-API-HOST"))throw new Error("Backend belum terhubung. URL API perlu diatur di docs/js/config.js.");const r=await fetch(API+path);if(!r.ok)throw new Error("Data belum bisa dimuat.");return r.json()}
+document.querySelectorAll("[data-year]").forEach(x=>x.textContent=new Date().getFullYear());
+const toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".site-nav");if(toggle&&nav)toggle.addEventListener("click",()=>{nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(nav.classList.contains("open")))});
+document.querySelectorAll(".site-nav a").forEach(a=>a.addEventListener("click",()=>nav?.classList.remove("open")));
+function card(x){return `<a class="discover-card" href="${esc(x.url||"#")}"><img src="${esc(x.image_url||"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80")}" alt=""><div><small>${esc(x.category_name||x.type||"Explore")}</small><h3>${esc(x.title||x.name)}</h3><p>${esc(x.description||"Explore more at Jimbaran Hub.")}</p><span>Discover ↗</span></div></a>`}
+async function loadListing(endpoint,target,empty){const el=document.querySelector(target);if(!el)return;try{const rows=await get(endpoint);el.innerHTML=rows.length?rows.map(x=>card({...x,title:x.title||x.name})).join(""):`<p class="empty-state">${empty}</p>`}catch(e){el.innerHTML=`<p class="empty-state">${esc(e.message)}</p>`}}

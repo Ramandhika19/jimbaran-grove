@@ -37,6 +37,24 @@ router.post("/auth/login", asyncRoute(async (req, res) => {
   res.json({ token, user:{ id:user.id, name:user.name, email:user.email, role:user.role } });
 }));
 
+
+router.get("/search", asyncRoute(async (req,res) => {
+ const q=clean(req.query.q), category=clean(req.query.category||"all").toLowerCase();
+ if(q.length<2) return res.json({query:q,results:[]});
+ const term="%"+q+"%", results=[];
+ const jobs=[];
+ if(category==="all"||category==="experiences") jobs.push(pool.query("SELECT p.id,p.name AS title,p.description,p.image_url,p.location,'experience' AS type,c.name AS category_name,CONCAT('/experiences.html?id=',p.id) AS url FROM products p LEFT JOIN categories c ON c.id=p.category_id WHERE p.is_active=1 AND (p.name LIKE ? OR p.description LIKE ? OR p.location LIKE ? OR c.name LIKE ?) ORDER BY p.is_featured DESC LIMIT 8",[term,term,term,term]));
+ if(category==="all"||category==="places") jobs.push(pool.query("SELECT t.id,t.name AS title,t.description,t.image_url,t.location,'place' AS type,t.category AS category_name,CONCAT('/places.html?tenant=',t.id) AS url FROM hub_tenants t WHERE t.is_active=1 AND (t.name LIKE ? OR t.description LIKE ? OR t.category LIKE ?) UNION ALL SELECT d.id,d.name AS title,d.description,d.image_url,d.region AS location,'destination' AS type,'Destination' AS category_name,CONCAT('/places.html?destination=',d.id) AS url FROM destinations d WHERE d.is_active=1 AND (d.name LIKE ? OR d.description LIKE ? OR d.region LIKE ?) LIMIT 12",[term,term,term,term,term,term]));
+ if(category==="all"||category==="events") jobs.push(pool.query("SELECT id,title,description,image_url,venue AS location,'event' AS type,category AS category_name,CONCAT('/events.html?id=',id) AS url FROM hub_events WHERE status='published' AND (title LIKE ? OR description LIKE ? OR category LIKE ? OR venue LIKE ?) LIMIT 8",[term,term,term,term]));
+ if(category==="all"||category==="stories") jobs.push(pool.query("SELECT id,title,excerpt AS description,image_url,NULL AS location,'story' AS type,category AS category_name,CONCAT('/news.html?id=',id) AS url FROM hub_stories WHERE status='published' AND (title LIKE ? OR excerpt LIKE ? OR content LIKE ? OR category LIKE ?) LIMIT 8",[term,term,term,term]));
+ const rows=await Promise.all(jobs);
+ for(const [items] of rows) results.push(...items);
+ res.json({query:q,total:results.length,results});
+}));
+router.get("/tenants", asyncRoute(async (_req,res)=>{const [rows]=await pool.query("SELECT * FROM hub_tenants WHERE is_active=1 ORDER BY category,name");res.json(rows);}));
+router.get("/events", asyncRoute(async (_req,res)=>{const [rows]=await pool.query("SELECT * FROM hub_events WHERE status='published' ORDER BY start_at IS NULL,start_at");res.json(rows);}));
+router.get("/stories", asyncRoute(async (_req,res)=>{const [rows]=await pool.query("SELECT id,title,slug,excerpt,category,image_url,published_at FROM hub_stories WHERE status='published' ORDER BY published_at DESC");res.json(rows);}));
+
 router.get("/products", asyncRoute(async (req,res) => {
   const [rows] = await pool.query(`SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON c.id=p.category_id WHERE p.is_active=1 ORDER BY p.is_featured DESC,p.id DESC`);
   res.json(rows);
