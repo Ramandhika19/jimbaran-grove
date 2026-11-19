@@ -1,5 +1,6 @@
-CREATE DATABASE IF NOT EXISTS jimbaran_hub CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE jimbaran_hub;
+-- Jimbaran Hub MySQL schema + demo seed data
+-- Create/select your database in the hosting provider first, then import this file.
+-- Do not put database credentials in this file or in the GitHub Pages frontend.
 
 CREATE TABLE IF NOT EXISTS users (
  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
