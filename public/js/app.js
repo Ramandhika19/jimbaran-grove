@@ -9,6 +9,42 @@ function showLogin(){document.getElementById("authModal").classList.add("open")}
 document.getElementById("loginOpen").addEventListener("click",showLogin);
 document.getElementById("modalClose").addEventListener("click",()=>document.getElementById("authModal").classList.remove("open"));
 document.getElementById("authModal").addEventListener("click",e=>{if(e.target.id==="authModal")e.currentTarget.classList.remove("open")});
-document.getElementById("loginForm").addEventListener("submit",async e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));const msg=document.getElementById("authMessage");try{const r=await fetch("/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});const result=await r.json();if(!r.ok)throw new Error(result.message);localStorage.setItem("jh_token",result.token);msg.textContent="Login berhasil. Token tersimpan di browser demo."}catch(err){msg.textContent=err.message}});
+// Demo-only hardcoded login: no API or database request is made.
+const DEMO_ACCOUNTS = {
+  "caesarramandhika@gmail.com": { name: "Administrator", role: "admin" },
+  "ramandhikaputra683@gmail.com": { name: "Jimbaran Grove Member", role: "user" }
+};
+document.getElementById("loginForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const data = Object.fromEntries(new FormData(form));
+  const email = String(data.email || "").trim().toLowerCase();
+  const password = String(data.password || "");
+  const msg = document.getElementById("authMessage");
+  const account = DEMO_ACCOUNTS[email];
+
+  if (!account || password !== "12345678") {
+    msg.textContent = "Email atau password salah. Periksa kembali akun demo kamu.";
+    return;
+  }
+
+  const session = {
+    email,
+    name: account.name,
+    role: account.role,
+    loginAt: new Date().toISOString()
+  };
+  localStorage.setItem("jg_session", JSON.stringify(session));
+  localStorage.setItem("jh_token", "demo-session");
+
+  msg.textContent = `Login demo berhasil sebagai ${account.role === "admin" ? "Administrator" : "User"}.`;
+  form.reset();
+
+  if (account.role === "admin") {
+    window.setTimeout(() => { window.location.href = "/admin.html"; }, 500);
+  } else {
+    msg.textContent += " Selamat datang di Jimbaran Grove!";
+  }
+});
 document.getElementById("year").textContent=new Date().getFullYear();
 loadProducts();loadVehicles();loadDestinations();loadGallery();
