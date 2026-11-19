@@ -7,7 +7,7 @@ const auth = require("../middleware/auth");
 const asyncRoute = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
 const clean = value => String(value ?? "").trim();
 
-router.get("/health", (_req, res) => res.json({ status: "ok", app: "Jimbaran Hub" }));
+router.get("/health", asyncRoute(async (_req, res) => { await pool.query("SELECT 1"); res.json({ status: "ok", database: "connected", app: "Jimbaran Hub" }); }));
 
 router.get("/bootstrap", asyncRoute(async (_req, res) => {
   const [[row]] = await pool.query("SELECT COUNT(*) AS total FROM users WHERE role='admin'");
